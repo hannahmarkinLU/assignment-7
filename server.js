@@ -118,7 +118,7 @@ app.post('/api/tracks', validateTrack, handleValidationErrors, async (req, res) 
             releaseYear
         });
     
-        res.status(201).json(newTrack);
+        res.status(201).json(formatTrack(newTrack));
     } catch (error) {
         console.error('Error creating track:', error.message, error);
         res.status(500).json({ error: 'Failed to create track' });
@@ -140,8 +140,8 @@ app.put('/api/tracks/:id', validateTrack, handleValidationErrors, async (req, re
         }
     
         const updatedTrack = await
-    Track.findByPk(req.params.id);
-        res.json(updatedTrack);
+        Track.findByPk(req.params.id);
+        res.json(formatTrack(updatedTrack));
     } catch (error) {
         console.error('Error updating track:', error.message, error);
         res.status(500).json({ error: 'Failed to update track' });
@@ -149,7 +149,7 @@ app.put('/api/tracks/:id', validateTrack, handleValidationErrors, async (req, re
 });
 
 // DELETE /api/tracks/:id - Delete track
-app.delete('/api/tracks/:id', validateTrack, handleValidationErrors, async (req, res) => {
+app.delete('/api/tracks/:id', handleValidationErrors, async (req, res) => {
     try {
         const deletedRowsCount = await
     Track.destroy({

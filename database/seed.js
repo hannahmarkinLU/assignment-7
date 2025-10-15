@@ -11,7 +11,7 @@ async function seedDatabase() {
         await db.sync(); // Creates tables if they don't exist
 
     		// Use bulkCreate to insert multiple records
-    		await Track.bulkCreate(sampleTracks);
+    		await Track.bulkCreate(sampleTracks, { ignoreDuplicates: true });
     		console.log('Sample tracks inserted successfully.');
 
     		// Query tracks using model methods
