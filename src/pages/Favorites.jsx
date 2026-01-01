@@ -13,7 +13,6 @@ function Favorites() {
     <main className="main-content">
       <div className="content-header">
         <h2>My Favorites</h2>
-        <p>Your saved movies collection</p>
       </div>
       {favoriteMovies.length > 0 ? (
         <MovieGrid movies={favoriteMovies} />

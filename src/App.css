@@ -183,7 +183,9 @@ body {
   color: #cccccc;
 }
 
-.favorite-button {
+/* Favorites and Watchlist Buttons (Some AI assistance, modified by me */
+.favorite-button,
+.watchlist-button {
   width: 100%;
   padding: 0.75rem;
   background-color: #333;
@@ -194,9 +196,10 @@ body {
   font-size: 1rem;
   font-weight: bold;
   transition: all 0.3s;
+  margin-bottom: 1rem;
 }
 
-.favorite-button:hover {
+.favorite-button:not(.favorited):hover {
   background-color: #e50914;
   border-color: #e50914;
 }
@@ -204,6 +207,41 @@ body {
 .favorite-button.favorited {
   background-color: #e50914;
   border-color: #e50914;
+}
+
+.favorite-button.favorited:hover {
+  background-color: #c50f0f;
+  border-color: #c50f0f;
+}
+
+.watchlist-button {
+  margin-bottom: 0rem;
+}
+
+.watchlist-button:hover {
+  background-color: #4caf50;
+  color: white;
+}
+
+.watchlist-button.added {
+  background-color: #4caf50;
+  color: white;
+}
+
+.watchlist-button.remove {
+  background-color: #e50914;
+  border-color: #e50914;
+}
+
+.watchlist-button:not(.remove):hover {
+  background-color: #4caf50;
+  color: white;
+}
+
+.favorite-button.remove:hover,
+.watchlist-button.remove:hover {
+  background-color: #c50f0f;
+  border-color: #c50f0f;
 }
 
 /* Loading Spinner */
